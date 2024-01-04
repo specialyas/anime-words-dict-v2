@@ -1,0 +1,30 @@
+<h1>Welcome to the words page</h1>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Anime dictionary</title>
+</head>
+<body>
+    <h1>Hello Nerd</h1>
+
+    <form action="/word" method="POST">
+        <input type="text" placeholder="anime word" name="word" id="">
+        <input type="text" placeholder="meaning" name="meaning" id="">
+        <button type="submit" id="submit">Submit</button>
+    </form>
+
+    <h2>Words</h2>
+    <ul>
+        <% for(var i = 0; i < words.length; i++) {%>
+        <li>
+            <span><%= words[i].word%>:</span>
+            <span><%= words[i].meaning%></span>
+        </li>
+            <% }    %>
+    </ul>
+</body>
+</html>
