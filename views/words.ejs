@@ -11,7 +11,15 @@
 <body>
     <h1>Hello Nerd</h1>
 
-    
+    <h2>Words</h2>
+    <ul>
+        <% for(var i = 0; i < words.length; i++) {%>
+        <li>
+            <span><%= words[i].animeWord%>:</span>
+            <span><%= words[i].meaning%></span>
+        </li>
+            <% }    %>
+    </ul>
 
     
 </body>
