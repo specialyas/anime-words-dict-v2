@@ -25,7 +25,7 @@ mongoose
 
 // homepage
 app.get('/', (req, res) => {
-    res.render('index.ejs')
+    res.render('home')
 })
 
 // show all words
@@ -75,7 +75,7 @@ app.post('/word', (req, res) => {
 // })
 
 // delete a wpord
-// app.get('/delete', (req, res) => {
+// app.get('/delete', (req, res) => { 
 //     res.render('delete')
 // })
 
