@@ -33,8 +33,8 @@ app.get('/words', (req, res) => {
 
 AnimeWord
   .find() 
-  .then(results => {
-    console.log(results)
+  .then(results => { 
+    // console.log(results)
      res.render('words',  {words:results})
     }).catch(error => {
       res.send(error)
@@ -47,12 +47,8 @@ app.get('/add', (req, res) => {
 })
 
 
-  
 // add a word
 app.post('/word', (req, res) => {
-    // console.log(req.body);
-    // console.log(req.body.animeWord); 
-    // console.log(req.body.meaning);
     const word = new AnimeWord ({
         animeWord: req.body.animeWord, 
         meaning: req.body.meaning
@@ -60,12 +56,11 @@ app.post('/word', (req, res) => {
         word.save()
         .then(() => {
             console.log('Item succedfully added to the database');
-            res.redirect('/word')
+            res.redirect('/words')
             })
         .catch((err) => {
             console.log(err);
-        });
-    
+        });  
     })
 
 
@@ -75,8 +70,33 @@ app.post('/word', (req, res) => {
 // })
 
 // delete a wpord
-// app.get('/delete', (req, res) => { 
-//     res.render('delete')
+app.get('/delete', (req, res) => { 
+    res.render('delete')
+})
+app.post('/delete', (req, res) => { 
+  console.log(req.body)
+  let word = req.body.animeWord
+  AnimeWord.deleteOne(
+        {animeWord: word}, 
+      ) .then(() => {
+        console.log("Successfully deleted word")
+         res.redirect("/words")
+       }).catch(error => {
+         res.send(error)
+         console.error(error)}) 
+    })
+    
+
+
+
+// app.delete((req, res) => { 
+//   Article.deleteOne(
+//     {title: req.params.articleName},
+//   ) .then(() => {
+//      res.send("Successfully deleted article")
+//    }).catch(error => {
+//      res.send(error)
+//      console.error(error)}) 
 // })
 
 app.listen(4000, () => {
